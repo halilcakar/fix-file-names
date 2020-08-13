@@ -1,12 +1,20 @@
 let fs = require("fs");
 let path = require("path");
-let directory = "./example-folder";
+let directory = "./icons";
 
 let fixName = (name) => {
   return name
     .toLowerCase()
+    .replace(/ı/g, "i")
+    .replace(/ç/g, "c")
+    .replace(/ğ/g, "g")
+    .replace(/ü/g, "u")
+    .replace(/ö/g, "o")
+    .replace(/ş/g, "s")
     .replace(/ä/g, "a")
     .replace(/ß/g, "ss")
+    .replace(/,./g, "")
+    .replace(/_/g, " ")
     .split(" ")
     .join("-");
 };
