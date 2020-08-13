@@ -22,8 +22,12 @@ fs.readdir(path.resolve(directory), "utf-8", (err, files) => {
   if (err) {
     throw err;
   }
+  let newDir = `${directory}-fixed`;
+  if (!fs.existsSync(newDir)){
+      fs.mkdirSync(newDir);
+  }
   files.forEach((file) => {
     let fileToRename = `${directory}/${file}`;
-    fs.renameSync(fileToRename, `${directory}/${fixName(file)}`);
+    fs.writeFileSync(`${newDir}/${fixName(file)}`, fileToRename);
   });
 });
